@@ -14,8 +14,13 @@ import java.util.Optional;
 @RequestMapping("/tasks")
 public class TaskController {
 
-    @Autowired
-    private TaskRepository taskRepository;
+    private final TaskRepository taskRepository;
+
+    // Constructor injection for TaskRepository
+    @Autowired // Optional if only one constructor
+    public TaskController(TaskRepository taskRepository) {
+        this.taskRepository = taskRepository;
+    }
 
     // Create a new task
     @PostMapping
