@@ -1,0 +1,51 @@
+2025-05-31 09:24:59.372 [background-preinit] INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.2.Final
+2025-05-31 09:24:59.462 [main] INFO  com.api.ApisApplication - Starting ApisApplication using Java 21.0.7 with PID 3432 (/app/build/classes/java/main started by jules in /app)
+2025-05-31 09:24:59.463 [main] DEBUG com.api.ApisApplication - Running with Spring Boot v3.5.0, Spring v6.2.7
+2025-05-31 09:24:59.464 [main] INFO  com.api.ApisApplication - No active profile set, falling back to 1 default profile: "default"
+2025-05-31 09:25:00.522 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-05-31 09:25:00.625 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 83 ms. Found 1 JPA repository interface.
+2025-05-31 09:25:01.444 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2025-05-31 09:25:01.471 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2025-05-31 09:25:01.479 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-05-31 09:25:01.480 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.41]
+2025-05-31 09:25:01.610 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-05-31 09:25:01.611 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 2066 ms
+2025-05-31 09:25:01.906 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2025-05-31 09:25:02.318 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:testdb user=SA
+2025-05-31 09:25:02.322 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2025-05-31 09:25:02.408 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-05-31 09:25:02.531 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.6.15.Final
+2025-05-31 09:25:02.609 [main] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2025-05-31 09:25:03.223 [main] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-05-31 09:25:03.310 [main] WARN  org.hibernate.orm.deprecation - HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-05-31 09:25:03.334 [main] INFO  o.hibernate.orm.connections.pooling - HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 2.3.232
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-05-31 09:25:04.263 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-05-31 09:25:04.293 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-05-31 09:25:04.574 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-05-31 09:25:04.965 [main] INFO  o.s.b.a.h.H2ConsoleAutoConfiguration - H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:testdb'
+2025-05-31 09:25:05.035 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2025-05-31 09:25:05.065 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
+2025-05-31 09:25:05.075 [main] INFO  com.api.ApisApplication - Started ApisApplication in 6.579 seconds (process running for 7.41)
+2025-05-31 09:25:10.269 [http-nio-8080-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-05-31 09:25:10.270 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2025-05-31 09:25:10.273 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 2 ms
+2025-05-31 09:25:10.484 [http-nio-8080-exec-1] INFO  com.api.controller.TaskController - Creating new task with name: Test Task
+2025-05-31 09:25:10.677 [http-nio-8080-exec-1] INFO  com.api.controller.TaskController - Task created successfully with ID: 1
+2025-05-31 09:25:10.798 [http-nio-8080-exec-2] INFO  com.api.controller.TaskController - Attempting to retrieve all tasks
+2025-05-31 09:25:11.052 [http-nio-8080-exec-2] INFO  com.api.controller.TaskController - Retrieved 1 tasks.
+2025-05-31 09:25:11.096 [http-nio-8080-exec-4] INFO  com.api.controller.TaskController - Attempting to retrieve task with ID: 1
+2025-05-31 09:25:11.121 [http-nio-8080-exec-4] INFO  com.api.controller.TaskController - Task found with ID: 1
+2025-05-31 09:25:11.146 [http-nio-8080-exec-5] INFO  com.api.controller.TaskController - Attempting to delete task with ID: 1
+2025-05-31 09:25:11.166 [http-nio-8080-exec-5] INFO  com.api.controller.TaskController - Task deleted successfully with ID: 1
+2025-05-31 09:25:11.190 [SpringApplicationShutdownHook] INFO  o.s.b.w.e.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2025-05-31 09:25:11.203 [tomcat-shutdown] INFO  o.s.b.w.e.tomcat.GracefulShutdown - Graceful shutdown complete
+2025-05-31 09:25:11.211 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-05-31 09:25:11.219 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2025-05-31 09:25:11.223 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.

@@ -1,6 +1,8 @@
 package com.api.controller;
 
 import com.api.model.Task;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import com.api.repository.TaskRepository;
 import java.util.List;
 import java.util.Optional;
@@ -21,6 +23,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/tasks")
 public class TaskController {
 
+  private static final Logger log = LoggerFactory.getLogger(TaskController.class);
   private final TaskRepository taskRepository;
 
   /**
@@ -41,11 +44,14 @@ public class TaskController {
    */
   @PostMapping
   public ResponseEntity<Task> createTask(@RequestBody Task task) {
+    log.info("Creating new task with name: {}", task.getName());
     try {
       Task newTask =
           taskRepository.save(new Task(task.getName(), task.getDescription(), task.isCompleted()));
+      log.info("Task created successfully with ID: {}", newTask.getId());
       return new ResponseEntity<>(newTask, HttpStatus.CREATED);
     } catch (Exception e) {
+      log.error("Error creating task: {}", task.getName(), e);
       return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
     }
   }
@@ -57,13 +63,17 @@ public class TaskController {
    */
   @GetMapping
   public ResponseEntity<List<Task>> getAllTasks() {
+    log.info("Attempting to retrieve all tasks");
     try {
       List<Task> tasks = taskRepository.findAll();
       if (tasks.isEmpty()) {
+        log.info("No tasks found.");
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
       }
+      log.info("Retrieved {} tasks.", tasks.size());
       return new ResponseEntity<>(tasks, HttpStatus.OK);
     } catch (Exception e) {
+      log.error("Error retrieving all tasks", e);
       return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
     }
   }
@@ -76,11 +86,14 @@ public class TaskController {
    */
   @GetMapping("/{id}")
   public ResponseEntity<Task> getTaskById(@PathVariable("id") long id) {
+    log.info("Attempting to retrieve task with ID: {}", id);
     Optional<Task> taskData = taskRepository.findById(id);
 
     if (taskData.isPresent()) {
+      log.info("Task found with ID: {}", id);
       return new ResponseEntity<>(taskData.get(), HttpStatus.OK);
     } else {
+      log.warn("Task not found with ID: {}", id);
       return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
   }
@@ -94,6 +107,7 @@ public class TaskController {
    */
   @PutMapping("/{id}")
   public ResponseEntity<Task> updateTask(@PathVariable("id") long id, @RequestBody Task task) {
+    log.info("Attempting to update task with ID: {}", id);
     Optional<Task> taskData = taskRepository.findById(id);
 
     if (taskData.isPresent()) {
@@ -102,11 +116,15 @@ public class TaskController {
       existingTask.setDescription(task.getDescription());
       existingTask.setCompleted(task.isCompleted());
       try {
-        return new ResponseEntity<>(taskRepository.save(existingTask), HttpStatus.OK);
+        taskRepository.save(existingTask);
+        log.info("Task updated successfully with ID: {}", existingTask.getId());
+        return new ResponseEntity<>(existingTask, HttpStatus.OK);
       } catch (Exception e) {
+        log.error("Error updating task with ID: {}", id, e);
         return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
       }
     } else {
+      log.warn("Task not found for update with ID: {}", id);
       return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
   }
@@ -119,10 +137,13 @@ public class TaskController {
    */
   @DeleteMapping("/{id}")
   public ResponseEntity<HttpStatus> deleteTask(@PathVariable("id") long id) {
+    log.info("Attempting to delete task with ID: {}", id);
     try {
       taskRepository.deleteById(id);
+      log.info("Task deleted successfully with ID: {}", id);
       return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     } catch (Exception e) {
+      log.error("Error deleting task with ID: {}", id, e);
       return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
     }
   }
@@ -134,10 +155,13 @@ public class TaskController {
    */
   @DeleteMapping
   public ResponseEntity<HttpStatus> deleteAllTasks() {
+    log.info("Attempting to delete all tasks");
     try {
       taskRepository.deleteAll();
+      log.info("All tasks deleted successfully.");
       return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     } catch (Exception e) {
+      log.error("Error deleting all tasks", e);
       return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
     }
   }
