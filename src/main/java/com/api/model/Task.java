@@ -7,6 +7,7 @@ import jakarta.persistence.Id;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 
+/** Represents a task entity. */
 @Entity
 public class Task {
 
@@ -26,6 +27,13 @@ public class Task {
   // Constructors
   public Task() {}
 
+  /**
+   * Constructs a new Task.
+   *
+   * @param name The name of the task.
+   * @param description The description of the task.
+   * @param completed Whether the task is completed.
+   */
   public Task(String name, String description, boolean completed) {
     this.name = name;
     this.description = description;
