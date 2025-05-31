@@ -1,6 +1,6 @@
 package com.api.repository;
 
-import com.example.restservice.model.Task;
+import com.api.model.Task;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

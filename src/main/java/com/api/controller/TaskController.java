@@ -1,7 +1,7 @@
 package com.api.controller;
 
-import com.example.restservice.model.Task;
-import com.example.restservice.repository.TaskRepository;
+import com.api.model.Task;
+import com.api.repository.TaskRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
