@@ -69,7 +69,11 @@ public class TaskController {
             existingTask.setName(task.getName());
             existingTask.setDescription(task.getDescription());
             existingTask.setCompleted(task.isCompleted());
-            return new ResponseEntity<>(taskRepository.save(existingTask), HttpStatus.OK);
+            try {
+                return new ResponseEntity<>(taskRepository.save(existingTask), HttpStatus.OK);
+            } catch (Exception e) {
+                return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+            }
         } else {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
